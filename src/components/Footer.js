@@ -1,17 +1,17 @@
-// src/components/Footer.js
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import { FaFacebook, FaTwitter, FaInstagram } from 'react-icons/fa';
 
 const FooterContainer = styled.footer`
   background-color: #2D9CDB;
   color: white;
   padding: 2.5rem 1rem;
   text-align: center;
+  border-top: 5px solid #FFD700;
   display: flex;
   flex-direction: column;
   gap: 2rem;
-  border-top: 5px solid #FFD700;
 `;
 
 const FooterContent = styled.div`
@@ -24,6 +24,11 @@ const FooterContent = styled.div`
 const Section = styled.div`
   max-width: 220px;
   text-align: left;
+
+  @media (max-width: 480px) {
+    max-width: 100%; /* Đảm bảo các phần mở rộng khi ở chế độ di động */
+    margin-bottom: 1.5rem; /* Khoảng cách giữa các phần */
+  }
 `;
 
 const SectionTitle = styled.h4`
@@ -46,10 +51,17 @@ const LinkItem = styled(Link)`
   }
 `;
 
+const ContactInfo = styled.p`
+  font-size: 1rem;
+  color: #eee;
+  margin: 0.3rem 0;
+`;
+
 const SocialMediaContainer = styled.div`
   display: flex;
   justify-content: center;
   gap: 1.5rem;
+  margin-top: 1rem;
 `;
 
 const SocialIcon = styled.a`
@@ -82,21 +94,21 @@ const Footer = () => {
         </Section>
         <Section>
           <SectionTitle>Liên Hệ</SectionTitle>
-          <p>Email: info@dichvuvesinh.com</p>
-          <p>Điện thoại: 0123 456 789</p>
-          <p>Địa chỉ: 123 Đường A, TP. HCM</p>
+          <ContactInfo>Email: info@dichvuvesinh.com</ContactInfo>
+          <ContactInfo>Điện thoại: 0123 456 789</ContactInfo>
+          <ContactInfo>Địa chỉ: 123 Đường A, TP. HCM</ContactInfo>
         </Section>
         <Section>
           <SectionTitle>Theo Dõi Chúng Tôi</SectionTitle>
           <SocialMediaContainer>
             <SocialIcon href="https://facebook.com" target="_blank" rel="noopener noreferrer">
-              <i className="fab fa-facebook"></i>
+              <FaFacebook />
             </SocialIcon>
             <SocialIcon href="https://twitter.com" target="_blank" rel="noopener noreferrer">
-              <i className="fab fa-twitter"></i>
+              <FaTwitter />
             </SocialIcon>
             <SocialIcon href="https://instagram.com" target="_blank" rel="noopener noreferrer">
-              <i className="fab fa-instagram"></i>
+              <FaInstagram />
             </SocialIcon>
           </SocialMediaContainer>
         </Section>

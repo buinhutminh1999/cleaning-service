@@ -1,4 +1,3 @@
-// src/components/CustomerReviews.js
 import React from 'react';
 import styled from 'styled-components';
 
@@ -12,6 +11,17 @@ const ReviewTitle = styled.h2`
   font-size: 2rem;
   color: #2D9CDB; /* Màu tiêu đề nhất quán với các tiêu đề khác */
   margin-bottom: 1.5rem;
+
+  @media (max-width: 768px) {
+    font-size: 1.8rem; /* Giảm kích thước tiêu đề cho thiết bị di động */
+  }
+`;
+
+const ReviewCardContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap; /* Cho phép card chuyển dòng */
+  justify-content: center; /* Canh giữa các card */
+  gap: 1rem; /* Khoảng cách giữa các card */
 `;
 
 const ReviewCard = styled.div`
@@ -20,12 +30,15 @@ const ReviewCard = styled.div`
   padding: 2rem;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
   margin: 1rem;
-  display: inline-block;
-  width: 300px;
+  flex: 1 1 300px; /* Tăng khả năng mở rộng và chiều rộng tối thiểu */
   transition: transform 0.3s ease;
   
   &:hover {
     transform: translateY(-5px);
+  }
+
+  @media (max-width: 768px) {
+    padding: 1.5rem; /* Giảm padding cho card trên thiết bị di động */
   }
 `;
 
@@ -51,14 +64,14 @@ const CustomerReviews = () => {
   return (
     <ReviewsContainer>
       <ReviewTitle>Đánh Giá Khách Hàng</ReviewTitle>
-      <div>
+      <ReviewCardContainer>
         {reviews.map((review, index) => (
           <ReviewCard key={index}>
             <ReviewText>"{review.text}"</ReviewText>
             <ReviewerName>- {review.name}</ReviewerName>
           </ReviewCard>
         ))}
-      </div>
+      </ReviewCardContainer>
     </ReviewsContainer>
   );
 };
